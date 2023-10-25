@@ -1,1 +1,0 @@
-# TP1-Cr-er-des-VM-sur-GCP-l-aide-de-terraform-et-d-ployer-une-application-Wordpress
