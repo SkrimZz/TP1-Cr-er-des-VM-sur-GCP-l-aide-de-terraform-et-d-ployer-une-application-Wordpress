@@ -1,1 +1,25 @@
+---
+- hosts: db_vm
+  become: yes
 
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+
+    - name: Install MariaDB server
+      apt:
+        name: mariadb-server
+        state: present
+
+    - name: Create a database
+      mysql_db:
+        name: mydatabase
+        state: present
+
+    - name: Create a database user
+      mysql_user:
+        name: db_user
+        password: "{{ mysql_password }}"
+        priv: "mydatabase.*:ALL"
+        host: localhost
